@@ -1,0 +1,22 @@
+name: forest_ninja_adventure
+publish_to: 'none'
+description: Jogo 2D mobile em Flutter/Dart com assets personalizados.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/player/ninja.png
+    - assets/images/enemies/skeleton.png
+    - assets/images/items/coin.png
+    - assets/images/background/forest.png
+    - assets/images/platforms/large.png
+    - assets/images/platforms/medium.png
+    - assets/images/platforms/rocky.png
