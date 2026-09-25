@@ -1,0 +1,9 @@
+{
+  "name": "Forest Ninja Adventure",
+  "short_name": "Forest Ninja",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#08191b",
+  "theme_color": "#08191b",
+  "description": "Jogo 2D de plataforma em Flutter."
+}
