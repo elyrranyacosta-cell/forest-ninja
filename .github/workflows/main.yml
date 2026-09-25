@@ -1,0 +1,50 @@
+name: Deploy Flutter Web
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v5
+
+      - name: Configurar Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Instalar dependências
+        run: flutter pub get
+
+      - name: Verificar código
+        run: flutter analyze
+
+      - name: Gerar versão Web
+        run: flutter build web --release --base-href "/forest-ninja/"
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Preparar arquivos para o Pages
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: build/web
+
+      - name: Publicar no GitHub Pages
+        uses: actions/deploy-pages@v4
+        id: deployment
